@@ -6,6 +6,7 @@ import os
 import socket
 import uuid
 
+
 def get_mac():  
     print("MAC address: ", end="")
     mac_add = print (':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff) 
@@ -16,7 +17,7 @@ def get_ip():
     ip_ad = socket.gethostbyname(socket.gethostname())
     print("IP: ", ip_ad)
 
-    
+
 
 get_mac()
 get_ip()
