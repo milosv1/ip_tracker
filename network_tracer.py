@@ -6,7 +6,18 @@ import os
 import socket
 import uuid
 import argparse
+from datetime import date
+import calendar as c
+from time import gmtime, strftime
 
+t = date.today()
+m_d = date.today()
+day = c.day_name[m_d.weekday()]
+t_n = strftime("%H:%M:%S",gmtime())
+
+def time_now():
+    t_now = t.strftime(f"{day} %B %d")
+    print("Last login: ", t_now, t_n)
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -14,7 +25,6 @@ def get_args():
     parser.add_argument("-ma","--my_mac")
     args = parser.parse_args()
     if args.my_ip:
-        print(f"{args.my_ip} works!")
         ip_ad = socket.gethostbyname(socket.gethostname())
         print("IP: ", ip_ad)
     elif args.my_mac:
@@ -25,4 +35,5 @@ def get_args():
 
 
 
+time_now()
 get_args()
